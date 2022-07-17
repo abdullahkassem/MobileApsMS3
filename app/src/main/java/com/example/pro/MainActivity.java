@@ -22,10 +22,7 @@ public class MainActivity extends AppCompatActivity {
         ListView mListView = (ListView) findViewById(R.id.listView1);
 
         //Create the Transactions objects
-        /*
-        Transactions john = new Transactions("John","12-20-1998","Male",
-                getResources().getIdentifier("@drawable/cartman_cop", null,this.getPackageName()));
-                */
+
 
 //        Transactions john = new Transactions("mobile phone","12-20-1998","10000",
 //                "category", "drawable://" + R.drawable.plus);

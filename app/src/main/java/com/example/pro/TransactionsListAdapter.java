@@ -67,7 +67,7 @@ public class TransactionsListAdapter extends ArrayAdapter<Transactions> {
 
         //get the persons information
         String transname = getItem(position).getTransname();
-        String date = getItem(position).getDate();
+        String time_date_str = getItem(position).getDate_time_str();
         double amount = getItem(position).getAmount();
         String category = getItem(position).getCategory();
         String imgUrl = getItem(position).getImgURL();
@@ -84,8 +84,8 @@ public class TransactionsListAdapter extends ArrayAdapter<Transactions> {
             convertView = inflater.inflate(mResource, parent, false);
             holder= new ViewHolder();
             holder.transname = (TextView) convertView.findViewById(R.id.textView1);
-            holder.date = (TextView) convertView.findViewById(R.id.textView2);
-            holder.amount = (TextView) convertView.findViewById(R.id.textView1);
+            holder.date = (TextView) convertView.findViewById(R.id.textView4);
+            holder.amount = (TextView) convertView.findViewById(R.id.textView2);
             holder.category = (TextView) convertView.findViewById(R.id.textView3);
             holder.image = (ImageView) convertView.findViewById(R.id.image);
 
@@ -105,7 +105,7 @@ public class TransactionsListAdapter extends ArrayAdapter<Transactions> {
         lastPosition = position;
 
         holder.transname.setText(transname);
-        holder.date.setText(date);
+        holder.date.setText(time_date_str);
         holder.amount.setText(Double.toString( amount ));
         holder.category.setText(category);
 

@@ -21,7 +21,7 @@ public class PersonalSettings implements Serializable {
     private double totalAccountsBalance;
     private double moneyRemaining;    //This will be divided among the remaining days
     ArrayList<String> Categories= new ArrayList<String>();
-    ArrayList<Transactions> allTrans = new ArrayList<Transactions>();
+    private ArrayList<Transactions> allTrans = new ArrayList<Transactions>();
 
     public static PersonalSettings getInstance(){
         return ourInstance;
@@ -44,6 +44,13 @@ public class PersonalSettings implements Serializable {
     }
 
     public ArrayList<Transactions> getAllTrans() {
+        for (FinancialAccount acc:this.myAccounts) {
+            allTrans.addAll( acc.getListOfTransactions() );
+            //Log.d(TAG, " allTrans size before "+allTrans.size()+" adding to it "+acc.getListOfTransactions().size()+" transactions, all Trans new size "+ allTrans.size());
+        }
+
+
+
         return allTrans;
     }
 
@@ -119,7 +126,7 @@ public class PersonalSettings implements Serializable {
 
     void addAccount(FinancialAccount acc) {
         myAccounts.add(acc);
-        this.allTrans.addAll( acc.getListOfTransactions() );
+
     }
 
     boolean addCategory(String s) {

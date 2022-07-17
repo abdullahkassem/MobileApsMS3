@@ -170,7 +170,7 @@ public class FirestoreAPI {
 
         Log.i(TAG, "createFinAcc: date read is " + date);
 
-        Transactions t = new Transactions(Transname,date,amount,category);
+        Transactions t = new Transactions(Transname,amount,category,date_ts);
 
         return t;
     }

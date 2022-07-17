@@ -7,18 +7,33 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Transactions {
     private String transname;
-    private String date;
+    private String date_time_str;
+    private Timestamp timestamp;
     private double amount;
     private String category;
     private String imgURL;
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public String getDate_time_str() {
+        return date_time_str;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
 
     public String getTransname() {
         return transname;
@@ -26,14 +41,6 @@ public class Transactions {
 
     public void setTransname(String transname) {
         this.transname = transname;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public double getAmount() {
@@ -60,11 +67,15 @@ public class Transactions {
         this.imgURL = imgURL;
     }
 
-    public Transactions(String transname, String date, double amount, String category) {
-        this.date = date;
+    public Transactions(String transname,  double amount, String category, Timestamp ts) {
         this.transname = transname;
         this.category = category;
         this.amount = amount;
+        timestamp =ts;
+        Date d = ts.toDate();
+        //date_time_str = Integer.toString(d.getDate()) + "/" +Integer.toString(d.getDay()+1) + "/" + Integer.toString(d.getYear()) + " ";
+        date_time_str = d.toGMTString();
+
         if(amount>0)
             this.imgURL = "drawable://" + R.drawable.plus;
         else
