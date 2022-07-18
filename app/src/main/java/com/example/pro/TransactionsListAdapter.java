@@ -122,6 +122,7 @@ public class TransactionsListAdapter extends ArrayAdapter<Transactions> {
                 .showImageOnLoading(defaultImage).build();
 
         //download and display image from url
+        holder.image.setMaxWidth(10);
         imageLoader.displayImage(imgUrl, holder.image, options);
 
         return convertView;

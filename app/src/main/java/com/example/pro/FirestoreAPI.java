@@ -74,10 +74,10 @@ public class FirestoreAPI {
     {
         String name = (String) userInformationMap.get("username");
         boolean notifications = (boolean) userInformationMap.get("notification");
-        int percent = ( (Long) userInformationMap.get("usable percentage") ).intValue();
+        double percent =   (Double) userInformationMap.get("usable percentage");
         String email = (String) userInformationMap.get("email address");
         String curr = (String) userInformationMap.get("currency");
-        double budget =( (Long) userInformationMap.get("budget") ).doubleValue();
+        double budget =(double) userInformationMap.get("budget");
         //Log.i(TAG, "InitializePersonalSettings: budget read is " + budget);
 
 
@@ -89,9 +89,9 @@ public class FirestoreAPI {
     FinancialAccount createFinAcc(Map<String,Object> accountMap)
     {
         String Accname = (String) accountMap.get("account name");
-        double OutstandingBalance =( (Long) accountMap.get("OutstandingBalance") ).doubleValue();
-        double Expense =( (Long) accountMap.get("Expense") ).doubleValue();
-        double Income =( (Long) accountMap.get("Income") ).doubleValue();
+        double OutstandingBalance =(double) accountMap.get("OutstandingBalance");
+        double Expense =(double) accountMap.get("Expense") ;
+        double Income =(double) accountMap.get("Income") ;
 
         Log.i(TAG, "createFinAcc: outBal read is " + OutstandingBalance);
 
@@ -160,7 +160,7 @@ public class FirestoreAPI {
     Transactions createTransObj(Map<String,Object> TransMap)
     {
         String Transname = (String) TransMap.get("transaction name");
-        double amount =( (Long) TransMap.get("amount") ).doubleValue();
+        double amount =(double) TransMap.get("amount");
         String category =(String) TransMap.get("category");
         Timestamp date_ts = (Timestamp) TransMap.get ("date");
 

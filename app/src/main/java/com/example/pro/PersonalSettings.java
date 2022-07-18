@@ -15,7 +15,7 @@ public class PersonalSettings implements Serializable {
     String Email = "";
     boolean Notifications;
     double Budget;
-    int usablePercentage;
+    double usablePercentage;
     String Currency;
     ArrayList<FinancialAccount> myAccounts = new ArrayList<FinancialAccount>();
     private double totalAccountsBalance;
@@ -32,7 +32,7 @@ public class PersonalSettings implements Serializable {
 
     }
 
-    void setPersonalSettings(String username,String Email,boolean nt,double budget,int usable_Percentage,String currency){
+    void setPersonalSettings(String username,String Email,boolean nt,double budget,double usable_Percentage,String currency){
         this.UserName = username;
         this.Email = Email;
         this.Notifications = nt;
@@ -44,6 +44,7 @@ public class PersonalSettings implements Serializable {
     }
 
     public ArrayList<Transactions> getAllTrans() {
+        allTrans.clear();
         for (FinancialAccount acc:this.myAccounts) {
             allTrans.addAll( acc.getListOfTransactions() );
             //Log.d(TAG, " allTrans size before "+allTrans.size()+" adding to it "+acc.getListOfTransactions().size()+" transactions, all Trans new size "+ allTrans.size());
@@ -104,7 +105,7 @@ public class PersonalSettings implements Serializable {
         return true;
     }
 
-    boolean setUsablePercentage(int number) {
+    boolean setUsablePercentage(double number) {
         if(number > 0)
             return false;
 

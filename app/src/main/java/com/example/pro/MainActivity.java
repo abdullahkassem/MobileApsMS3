@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         PersonalSettings mysett = PersonalSettings.getInstance();
         Log.i(TAG, "onCreate: user name " + mysett.UserName);
         ArrayList<Transactions> transactionsList = mysett.getAllTrans();
+        Log.d(TAG, "onCreate: mysett.getAllTrans() list size is " + mysett.getAllTrans().size());
 
 //        transactionsList.add(john);
 //        transactionsList.add(steve);
